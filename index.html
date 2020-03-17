@@ -1,0 +1,119 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 id="timer"> hi</h1>
+    <h2 id= "round">Round: 1</h2>
+    <h3 id= "exerciseType"></h3>
+    <div>
+        <img id="myImg" src="">
+    </div>
+    
+    
+    <script>
+    let timeElapsed = 0
+    let seconds =0
+    let roundLevel =1
+    let station = 1 
+    let arrOfStations = ["1. Burpee One Legged", "2. 1X JUMP SQUAT + 1X BURPEE PYRAMID","3. SQUAD PULSE", "4. HIGH KNEES, SINGLE KNEE", "5.MOVING PLANK", "6. INCH WORM", "7. LATERAL TUCK JUMPS", "8. MOUNTAIN CLIMBERS", "9. BEAR CRAWL + REVERSE"]
+    let arrOfImg = ["images/1singleLegBurpee.jpg","images/2pyramid_burpee.png","images/3exercise-squat-pulse.jpg","images/4Plyometrics-High-Knees.jpg","images/5walking-plank.jpg","images/6Inchworm.jpg","images/7tuck-jumps.jpg","images/8mountain-climbers.jpg","images/9Bear-Crawl.jpg"]
+const element = document.getElementById('timer')
+const round = document.getElementById('round')
+const exercise = document.getElementById('exerciseType')
+const image = document.getElementById("myImg")
+
+let restStart = 2
+let restEnd = 3
+let effortStart = 0
+let efforEnd = 2
+let i =0
+exercise.innerHTML = arrOfStations[i]
+image.src = arrOfImg[i]
+let hasChangedExercice = false;
+
+function update() // RequestAnimationFrame
+{   
+    
+    timeElapsed += 1 / 60;
+    seconds = Math.floor(timeElapsed);
+    
+    
+
+    if (seconds >= effortStart && seconds <= efforEnd) {
+        element.style.color = "black";
+    } else if (seconds >restStart && seconds<= restEnd) {
+        if (!hasChangedExercice) {
+            i = i +1
+            hasChangedExercice = true;
+        }
+        
+        if (i === arrOfStations.length) {
+            i = 0;
+            roundLevel = roundLevel + 1
+            if (roundLevel===5) {
+                document.body.innerHTML= "<h1>youWINNNN</h1>"
+            }
+            
+        }
+
+        exercise.innerHTML = arrOfStations[i]
+        image.src = arrOfImg[i]
+
+        element.style.color = "red";
+        
+        
+        //change color to red 
+    } else if (seconds>restEnd) {
+        timeElapsed = 0
+
+        hasChangedExercice = false;
+    }
+
+    
+
+    window.requestAnimationFrame(update)
+    // if (seconds === 9) {
+        
+    //     //do a for loop
+    //     console.log("before",roundLevel)
+
+    //     for (let i=0; i<arrOfStations.length; i++) {
+
+    //     }
+    //     roundLevel = roundLevel + 1
+        
+    //     console.log("after",roundLevel)
+    //     timeElapsed = 0 
+
+
+        // if(i===8) {
+        //     //increment lap
+
+        // }
+        // if(i !==8) {
+        //     //increase the arr[i] ++
+        // }
+        
+        // //place a function where it will change the writing in the array 
+
+        // if (round === 5) {
+        //     return 
+        // }
+        
+    //}
+    element.innerHTML = seconds
+    round.innerHTML = `Round: ${roundLevel}`
+}
+
+window.requestAnimationFrame(update);
+
+
+
+
+    </script>
+</body>
+</html>
