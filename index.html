@@ -2,38 +2,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Timer</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:900&display=swap" rel="stylesheet">
 </head>
-<body>
 
-    <h1 id="timer"> hi</h1>
-    <h2 id= "round">Round: 1</h2>
-    <h3 id= "exerciseType"></h3>
-    <div>
-        <img id="myImg" src="">
+<body>
+    <div class="firstContainer">
+        <div class="firstRow">
+            <div class="workOrStop firstblock"> 
+                <div class='workOrStopText'>
+                    <p class="workTextParagraph">Work</p>
+                    <div class="signs">
+                        <svg class="heartSvg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/></svg>               
+                        <svg class="stopSvg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.728 3l5.272 5.272v7.456l-5.272 5.272h-7.456l-5.272-5.272v-7.456l5.272-5.272h7.456zm8.272 4.029v9.941l-7.029 7.03h-9.942l-7.029-7.029v-9.942l7.029-7.029h9.941l7.03 7.029zm-2 .829l-5.858-5.858h-8.284l-5.858 5.858v8.284l5.858 5.858h8.284l5.858-5.858v-8.284z"/></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="seconds firstblock">
+                <div class='containerParagraph'>
+                    <p id="timer">50</p>
+                    
+                </div>
+                
+    
+                <svg class= "circleSvg" viewBox="-100 -100 200 200"> <!-- viewBox defines the coordinate system.-->
+                    <circle class="greyBorder" cx="0" cy="0" r="85" />
+                    <circle class="outer" cx="0" cy="0" r="85" />
+                </svg>
+                
+                
+            </div>
+            <div class="sets firstblock">
+                <div class='setsText'>
+                    <p class="lapText">Laps Left: </p>
+                    <p id= "round">5</p>
+        
+                </div>
+            </div>
+    
+
+        </div>
+        <div class="secondRow">
+            <div>
+                <h3 id= "exerciseType"></h3>
+            </div>
+            <div>
+                <div class="imageAndStation">
+                    <img id="myImg" src="images/wednesday/9crocodile-walk.jpg" width="800" height="400">
+                    <div id="stationNumber">
+                        <p id="stationNumberText">1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="barDiv">
+            <div id="myProgress">
+                <div id="myBar">0%</div>
+            </div>
+        </div>
     </div>
+
+
+
+
+
+
+
+
+   
+            
+           
+        
     
+
+        
     
+    <audio src="Asian Gong Hit-SoundBible.com-1634281527.mp3" id="timerAudio"></audio>
+    <audio src="cheer2.mp3" id="finishAudio"></audio>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
     <script>
+
+    const workoutData = {
+        monday: [{ description: "1. Burpee One Legged", imageSource:"images/1singleLegBurpee.jpg"},{description:"2. 1X JUMP SQUAT + 1X BURPEE PYRAMID", imageSource:"images/2pyramid_burpee.png"},{description: "3. SQUAD PULSE",imageSource:"images/3exercise-squat-pulse.jpg"},{description:"4. HIGH KNEES, SINGLE KNEE", imageSource:"images/4Plyometrics-High-Knees.jpg"},{description:"5.MOVING PLANK" ,imageSource:"images/5walking-plank.jpg"},{description: "6. INCH WORM",imageSource:"images/6Inchworm.jpg"},{description:"7. LATERAL TUCK JUMPS" ,imageSource:"images/7tuck-jumps.jpg"},{description:"8. MOUNTAIN CLIMBERS" ,imageSource:"images/8mountain-climbers.jpg"},{description:"9. BEAR CRAWL + REVERSE" ,imageSource:"images/9Bear-Crawl.jpg"}],
+        tuesday:[{description: "1. REVERSE BURPEE",imageSource: "images/tuesday/1.reverse-burpee.jpg" }, {description:"2.HAND WALKS IN HAND WALKS OUT" ,imageSource: "images/tuesday/2Inchworm.jpg" },{description: "3.ICE SKATER"  ,imageSource: "images/tuesday/3.iceskater.jpg" },{description: "4.PUSH UP JACK"  ,imageSource: "images/tuesday/4Push-Up-Jack_Exercise.jpg" },{description: "5.PLANKS FEET TWISTS" ,imageSource: "images/tuesday/5.planksfeettwist.jpg" },{description: "6.SQUAT PULSE COMBO" ,imageSource: "images/tuesday/6pulse-squat-1-800x728.webp" },{description: "7. 5X JACKNIVES + 5X CRUNCHES" ,imageSource: "images/tuesday/7. crunches.gif" },{description: "8. MOUNTAIN CLIMBERS WIDE"  ,imageSource: "images/tuesday/8.mountainwide.gif" },{description: "9.SPRINTING LUNGES"  ,imageSource: "images/tuesday/9.sprinters-lunge-hip-exercise.gif"}],
+        wednesday:[{description: "1.MOUNTAIN CLIMBERS" ,imageSource: "images/wednesday/1.mountainclimbers.gif" }, {description: "2.BURPEE HANDS OFF"  ,imageSource: "images/wednesday/2.BURPEE.gif" },{description: "10X HEEL TOUCHES + 4X ICE SKATER " ,imageSource:"images/wednesday/3HEELTOUCHES.gif" },{description:  "4.SQUAD MIDPOINT ALTERNATIVE REVERSE LUNGES" ,imageSource: "images/wednesday/4.SQUAD MIDPOINT.gif" },{description: "5.MOVING PLANK"  ,imageSource: "images/wednesday/5Plank-Walkdown.gif" },{description: "6.TUCK JUMP",imageSource: "images/wednesday/6TUCK JUMP.gif" },{description: "7. TRICEP PUSH UP + FOOT JACKS"  ,imageSource: "images/wednesday/7crossjacks.gif" },{description: "10X BICYCLE KICKS + KICKS + 5X JACKKNIVES" ,imageSource: "images/wednesday/8SpiritedThreadbareLeafbird-small.gif" },{description: "9.GORILLA BOUNDS " ,imageSource: "images/wednesday/9crocodile-walk.jpg" }]
+        // thursday: [{description:   ,imageSource:  }, {description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  }]
+        // friday: [{description:   ,imageSource:  }, {description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  }]
+        // saturday: [{description:   ,imageSource:  }, {description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  }]
+        // sunday: [{description:   ,imageSource:  }, {description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  }]
+    
+    }
     let timeElapsed = 0
     let seconds =0
-    let roundLevel =1
+    let roundLevel =4
+    let numberExercisesDone =0
     let station = 1 
-    let arrOfStations = ["1. Burpee One Legged", "2. 1X JUMP SQUAT + 1X BURPEE PYRAMID","3. SQUAD PULSE", "4. HIGH KNEES, SINGLE KNEE", "5.MOVING PLANK", "6. INCH WORM", "7. LATERAL TUCK JUMPS", "8. MOUNTAIN CLIMBERS", "9. BEAR CRAWL + REVERSE"]
-    let arrOfImg = ["images/1singleLegBurpee.jpg","images/2pyramid_burpee.png","images/3exercise-squat-pulse.jpg","images/4Plyometrics-High-Knees.jpg","images/5walking-plank.jpg","images/6Inchworm.jpg","images/7tuck-jumps.jpg","images/8mountain-climbers.jpg","images/9Bear-Crawl.jpg"]
+    let arrOfStations = workoutData.wednesday;
+    const bar = document.getElementById("myBar");
+    let numOfLaps = arrOfStations.length*roundLevel;
 const element = document.getElementById('timer')
 const round = document.getElementById('round')
 const exercise = document.getElementById('exerciseType')
 const image = document.getElementById("myImg")
+const stationNumberText = document.getElementById("stationNumberText")
+const timerSquare= document.querySelector(".seconds")
+const heartSvg = document.querySelector(".heartSvg")
+const stopSvg = document.querySelector(".stopSvg")
+const workTextParagraph= document.querySelector(".workTextParagraph")
+const outer = document.querySelector(".outer")
 
-let restStart = 2
-let restEnd = 3
+let restStart = 3
+let restEnd = 4
 let effortStart = 0
-let efforEnd = 2
+let efforEnd = 3
 let i =0
-exercise.innerHTML = arrOfStations[i]
-image.src = arrOfImg[i]
+exercise.innerHTML = arrOfStations[i].description
+image.src = arrOfStations[i].imageSource
+
 let hasChangedExercice = false;
+circleRotation45()
 
 function update() // RequestAnimationFrame
 {   
@@ -44,74 +133,82 @@ function update() // RequestAnimationFrame
     
 
     if (seconds >= effortStart && seconds <= efforEnd) {
-        element.style.color = "black";
+        
+        
     } else if (seconds >restStart && seconds<= restEnd) {
         if (!hasChangedExercice) {
             i = i +1
+            document.getElementById("timerAudio").play()
+            numberExercisesDone = numberExercisesDone +1
+            const percent = Math.floor(numberExercisesDone/numOfLaps*100)
+            bar.style.width = percent + "%";
+            bar.innerHTML = percent + "%";
+            stationNumberText.innerHTML = i + 1
+            timerSquare.style.backgroundColor = "red"; 
+            heartSvg.style.display = "none"
+            stopSvg.style.display = "block"
+            workTextParagraph.innerHTML = "Rest"
+            circleRotation15()
             hasChangedExercice = true;
         }
         
         if (i === arrOfStations.length) {
             i = 0;
-            roundLevel = roundLevel + 1
-            if (roundLevel===5) {
-                document.body.innerHTML= "<h1>youWINNNN</h1>"
+            roundLevel = roundLevel - 1
+            stationNumberText.innerHTML = i + 1
+
+            if (roundLevel===0) {
+                // document.body.innerHTML= "<h1>youWINNNN</h1>"
+                document.getElementById("finishAudio").play()
+                return
             }
             
         }
 
-        exercise.innerHTML = arrOfStations[i]
-        image.src = arrOfImg[i]
+        exercise.innerHTML = arrOfStations[i].description
+        image.src = arrOfStations[i].imageSource
 
-        element.style.color = "red";
+        
         
         
         //change color to red 
     } else if (seconds>restEnd) {
         timeElapsed = 0
-
+        document.getElementById("timerAudio").play()
+        heartSvg.style.display = "block"
+        stopSvg.style.display = "none"
+        timerSquare.style.backgroundColor = "rgb(33, 170, 33)"
+        workTextParagraph.innerHTML = "Work"
+        circleRotation45()
         hasChangedExercice = false;
     }
 
-    
-
     window.requestAnimationFrame(update)
-    // if (seconds === 9) {
-        
-    //     //do a for loop
-    //     console.log("before",roundLevel)
-
-    //     for (let i=0; i<arrOfStations.length; i++) {
-
-    //     }
-    //     roundLevel = roundLevel + 1
-        
-    //     console.log("after",roundLevel)
-    //     timeElapsed = 0 
-
-
-        // if(i===8) {
-        //     //increment lap
-
-        // }
-        // if(i !==8) {
-        //     //increase the arr[i] ++
-        // }
-        
-        // //place a function where it will change the writing in the array 
-
-        // if (round === 5) {
-        //     return 
-        // }
-        
-    //}
-    element.innerHTML = seconds
-    round.innerHTML = `Round: ${roundLevel}`
+  
+    element.innerHTML = `00:${seconds}`
+    round.innerHTML = `${roundLevel}`
 }
 
 window.requestAnimationFrame(update);
 
+function circleRotation45() {
 
+    outer.style.strokeDashoffset = 534;
+
+    gsap.to(".outer", {
+        duration: 3,  
+        strokeDashoffset: 0
+    });
+}
+
+function circleRotation15() {
+    outer.style.strokeDashoffset = 534;
+    console.log('15')
+    gsap.to(".outer", {
+        duration: 1,  
+        strokeDashoffset: 0
+    })
+}
 
 
     </script>

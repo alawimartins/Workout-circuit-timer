@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>monday</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="firstContainer">
+        <div class="workOrStop firstblock"> 
+            <div class='workOrStopText'>
+                <p class="workTextParagraph">Work</p>
+                <div class="signs">
+                    <svg class="heartSvg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/></svg>               
+                    <svg class="stopSvg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.728 3l5.272 5.272v7.456l-5.272 5.272h-7.456l-5.272-5.272v-7.456l5.272-5.272h7.456zm8.272 4.029v9.941l-7.029 7.03h-9.942l-7.029-7.029v-9.942l7.029-7.029h9.941l7.03 7.029zm-2 .829l-5.858-5.858h-8.284l-5.858 5.858v8.284l5.858 5.858h8.284l5.858-5.858v-8.284z"/></svg>
+                </div>
+            </div>
+        </div>
+        <div class="seconds firstblock">
+            <div class='containerParagraph'>
+                <p>50</p>
+                
+            </div>
+            
+
+            <svg class= "circleSvg" viewBox="-100 -100 200 200"> <!-- viewBox defines the coordinate system.-->
+                <circle class="greyBorder" cx="0" cy="0" r="85" />
+                <circle class="outer" cx="0" cy="0" r="85" />
+            </svg>
+            
+            
+        </div>
+        <div class="sets firstblock">
+            <div class='setsText'>
+                <p class="lapText">Laps Left: </p>
+                <p>5</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="Progressbar">
+        <div class="ProgressbarMeter"></div>
+        <div class="InnerDivs"></div>
+        <div class="InnerDivs"></div>
+        <div class="InnerDivs"></div>
+        <div class="InnerDivs"></div>
+        <div class="InnerDivs"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+
+    <script>
+        function circleRotation45(){
+            gsap.to(".outer", {
+            duration: 3,  
+            strokeDashoffset: 0
+        })
+        }
+
+        function circleRotation15{
+            gsap.to(".outer", {
+            duration: 3,  
+            strokeDashoffset: 0
+        })
+        }
+        
+    </script>
+</body>
+</html>
