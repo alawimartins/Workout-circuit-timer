@@ -53,6 +53,23 @@
                     <div id="stationNumber">
                         <p id="stationNumberText">1</p>
                     </div>
+                    <div class="parentIcons">
+                        <div class="icons">
+                            <div class="refresh">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.5 2c-5.629 0-10.212 4.436-10.475 10h-3.025l4.537 5.917 4.463-5.917h-2.975c.26-3.902 3.508-7 7.475-7 4.136 0 7.5 3.364 7.5 7.5s-3.364 7.5-7.5 7.5c-2.381 0-4.502-1.119-5.876-2.854l-1.847 2.449c1.919 2.088 4.664 3.405 7.723 3.405 5.798 0 10.5-4.702 10.5-10.5s-4.702-10.5-10.5-10.5z"/></svg>
+                            </div>
+                            <div class="play">
+                                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M23 12l-22 12v-24l22 12zm-21 10.315l18.912-10.315-18.912-10.315v20.63z"/></svg>
+                            </div>
+                            <div class="paused">
+                                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M10 24h-6v-24h6v24zm10 0h-6v-24h6v24zm-11-23h-4v22h4v-22zm10 0h-4v22h4v-22z"/></svg>
+                            </div>
+                                
+                            <div class="home">
+                                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M22 11.414v12.586h-20v-12.586l-1.293 1.293-.707-.707 12-12 12 12-.707.707-1.293-1.293zm-6 11.586h5v-12.586l-9-9-9 9v12.586h5v-9h8v9zm-1-7.889h-6v7.778h6v-7.778z"/></svg>
+                            </div>  
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,22 +79,7 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-   
-            
-           
-        
-    
-
-        
-    
+                    
     <audio src="Asian Gong Hit-SoundBible.com-1634281527.mp3" id="timerAudio"></audio>
     <audio src="cheer2.mp3" id="finishAudio"></audio>
     
@@ -85,9 +87,9 @@
     <script>
 
     const workoutData = {
-        monday: [{ description: "1. Burpee One Legged", imageSource:"images/1singleLegBurpee.jpg"},{description:"2. 1X JUMP SQUAT + 1X BURPEE PYRAMID", imageSource:"images/2pyramid_burpee.png"},{description: "3. SQUAD PULSE",imageSource:"images/3exercise-squat-pulse.jpg"},{description:"4. HIGH KNEES, SINGLE KNEE", imageSource:"images/4Plyometrics-High-Knees.jpg"},{description:"5.MOVING PLANK" ,imageSource:"images/5walking-plank.jpg"},{description: "6. INCH WORM",imageSource:"images/6Inchworm.jpg"},{description:"7. LATERAL TUCK JUMPS" ,imageSource:"images/7tuck-jumps.jpg"},{description:"8. MOUNTAIN CLIMBERS" ,imageSource:"images/8mountain-climbers.jpg"},{description:"9. BEAR CRAWL + REVERSE" ,imageSource:"images/9Bear-Crawl.jpg"}],
-        tuesday:[{description: "1. REVERSE BURPEE",imageSource: "images/tuesday/1.reverse-burpee.jpg" }, {description:"2.HAND WALKS IN HAND WALKS OUT" ,imageSource: "images/tuesday/2Inchworm.jpg" },{description: "3.ICE SKATER"  ,imageSource: "images/tuesday/3.iceskater.jpg" },{description: "4.PUSH UP JACK"  ,imageSource: "images/tuesday/4Push-Up-Jack_Exercise.jpg" },{description: "5.PLANKS FEET TWISTS" ,imageSource: "images/tuesday/5.planksfeettwist.jpg" },{description: "6.SQUAT PULSE COMBO" ,imageSource: "images/tuesday/6pulse-squat-1-800x728.webp" },{description: "7. 5X JACKNIVES + 5X CRUNCHES" ,imageSource: "images/tuesday/7. crunches.gif" },{description: "8. MOUNTAIN CLIMBERS WIDE"  ,imageSource: "images/tuesday/8.mountainwide.gif" },{description: "9.SPRINTING LUNGES"  ,imageSource: "images/tuesday/9.sprinters-lunge-hip-exercise.gif"}],
-        wednesday:[{description: "1.MOUNTAIN CLIMBERS" ,imageSource: "images/wednesday/1.mountainclimbers.gif" }, {description: "2.BURPEE HANDS OFF"  ,imageSource: "images/wednesday/2.BURPEE.gif" },{description: "10X HEEL TOUCHES + 4X ICE SKATER " ,imageSource:"images/wednesday/3HEELTOUCHES.gif" },{description:  "4.SQUAD MIDPOINT ALTERNATIVE REVERSE LUNGES" ,imageSource: "images/wednesday/4.SQUAD MIDPOINT.gif" },{description: "5.MOVING PLANK"  ,imageSource: "images/wednesday/5Plank-Walkdown.gif" },{description: "6.TUCK JUMP",imageSource: "images/wednesday/6TUCK JUMP.gif" },{description: "7. TRICEP PUSH UP + FOOT JACKS"  ,imageSource: "images/wednesday/7crossjacks.gif" },{description: "10X BICYCLE KICKS + KICKS + 5X JACKKNIVES" ,imageSource: "images/wednesday/8SpiritedThreadbareLeafbird-small.gif" },{description: "9.GORILLA BOUNDS " ,imageSource: "images/wednesday/9crocodile-walk.jpg" }]
+        monday: [{ description: "Burpee One Legged", imageSource:"images/1singleLegBurpee.jpg"},{description:"1X JUMP SQUAT + 1X BURPEE PYRAMID", imageSource:"images/2pyramid_burpee.png"},{description: "SQUAD PULSE",imageSource:"images/3exercise-squat-pulse.jpg"},{description:"HIGH KNEES, SINGLE KNEE", imageSource:"images/4Plyometrics-High-Knees.jpg"},{description:"5.MOVING PLANK" ,imageSource:"images/5walking-plank.jpg"},{description: "INCH WORM",imageSource:"images/6Inchworm.jpg"},{description:"LATERAL TUCK JUMPS" ,imageSource:"images/7tuck-jumps.jpg"},{description:"MOUNTAIN CLIMBERS" ,imageSource:"images/8mountain-climbers.jpg"},{description:"BEAR CRAWL + REVERSE" ,imageSource:"images/9Bear-Crawl.jpg"}],
+        tuesday:[{description: "REVERSE BURPEE",imageSource: "images/tuesday/1.reverse-burpee.jpg" }, {description:"HAND WALKS IN HAND WALKS OUT" ,imageSource: "images/tuesday/2Inchworm.jpg" },{description: "ICE SKATER"  ,imageSource: "images/tuesday/3.iceskater.jpg" },{description: "PUSH UP JACK"  ,imageSource: "images/tuesday/4Push-Up-Jack_Exercise.jpg" },{description: "PLANKS FEET TWISTS" ,imageSource: "images/tuesday/5.planksfeettwist.jpg" },{description: "SQUAT PULSE COMBO" ,imageSource: "images/tuesday/6pulse-squat-1-800x728.webp" },{description: "5X JACKNIVES + 5X CRUNCHES" ,imageSource: "images/tuesday/7. crunches.gif" },{description: "MOUNTAIN CLIMBERS WIDE"  ,imageSource: "images/tuesday/8.mountainwide.gif" },{description: "SPRINTING LUNGES"  ,imageSource: "images/tuesday/9.sprinters-lunge-hip-exercise.gif"}],
+        wednesday:[{description: "MOUNTAIN CLIMBERS" ,imageSource: "images/wednesday/1.mountainclimbers.gif" }, {description: "BURPEE HANDS OFF"  ,imageSource: "images/wednesday/2.BURPEE.gif" },{description: "10X HEEL TOUCHES + 4X ICE SKATER " ,imageSource:"images/wednesday/3HEELTOUCHES.gif" },{description:  "SQUAD MIDPOINT ALTERNATIVE REVERSE LUNGES" ,imageSource: "images/wednesday/4.SQUAD MIDPOINT.gif" },{description: "MOVING PLANK"  ,imageSource: "images/wednesday/5Plank-Walkdown.gif" },{description: "TUCK JUMP",imageSource: "images/wednesday/6TUCK JUMP.gif" },{description: "TRICEP PUSH UP + FOOT JACKS"  ,imageSource: "images/wednesday/7crossjacks.gif" },{description: "10X BICYCLE KICKS + KICKS + 5X JACKKNIVES" ,imageSource: "images/wednesday/8SpiritedThreadbareLeafbird-small.gif" },{description: "GORILLA BOUNDS " ,imageSource: "images/wednesday/9crocodile-walk.jpg" }]
         // thursday: [{description:   ,imageSource:  }, {description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  }]
         // friday: [{description:   ,imageSource:  }, {description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  }]
         // saturday: [{description:   ,imageSource:  }, {description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  }]
@@ -112,29 +114,38 @@ const heartSvg = document.querySelector(".heartSvg")
 const stopSvg = document.querySelector(".stopSvg")
 const workTextParagraph= document.querySelector(".workTextParagraph")
 const outer = document.querySelector(".outer")
+const icons = document.querySelector(".icons")
+const body = document.body
+const pausedSvg = document.querySelector(".paused")
+const playSvg = document.querySelector(".play")
 
-let restStart = 3
-let restEnd = 4
+let restStart = 44
+let restEnd = 60
 let effortStart = 0
-let efforEnd = 3
+let efforEnd = 44
 let i =0
+let paused = false
 exercise.innerHTML = arrOfStations[i].description
 image.src = arrOfStations[i].imageSource
 
 let hasChangedExercice = false;
+let startExercise= false
 circleRotation45()
 
 function update() // RequestAnimationFrame
 {   
-    
+    if(paused) {
+        return
+    }
     timeElapsed += 1 / 60;
     seconds = Math.floor(timeElapsed);
     
     
 
     if (seconds >= effortStart && seconds <= efforEnd) {
+    
         
-        
+
     } else if (seconds >restStart && seconds<= restEnd) {
         if (!hasChangedExercice) {
             i = i +1
@@ -196,19 +207,39 @@ function circleRotation45() {
     outer.style.strokeDashoffset = 534;
 
     gsap.to(".outer", {
-        duration: 3,  
+        duration: 44,  
         strokeDashoffset: 0
     });
 }
 
 function circleRotation15() {
     outer.style.strokeDashoffset = 534;
-    console.log('15')
     gsap.to(".outer", {
-        duration: 1,  
+        duration: 15,  
         strokeDashoffset: 0
     })
 }
+
+function iconsPop() {
+    icons.style.visibility = "visible";
+}
+function pausedClicked() {
+    paused = true;
+    gsap.globalTimeline.pause()
+    // setTimeout(()=>{
+        // gsap.globalTimeline.play()
+    // }, 1000)
+}
+function playClick() {
+    paused=false;
+    gsap.globalTimeline.play()
+}
+
+body.addEventListener("mousemove", iconsPop)
+pausedSvg.addEventListener("click",pausedClicked)
+playSvg.addEventListener("click",playClick)
+
+
 
 
     </script>
