@@ -50,9 +50,16 @@
             <div>
                 <div class="imageAndStation">
                     <img id="myImg" src="images/wednesday/9crocodile-walk.jpg" width="800" height="400">
+                    <div class="buttonsLeftRight">
+                        <div class="buttons" id="previous">&lt;</div>
+                        <div class="buttons" id="next">&gt;</div>
+                    </div>
                     <div id="stationNumber">
                         <p id="stationNumberText">1</p>
+                        
+                        
                     </div>
+                    
                     <div class="parentIcons">
                         <div class="icons">
                             <div class="refresh">
@@ -66,19 +73,22 @@
                             </div>
                                 
                             <div class="home">
-                                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M22 11.414v12.586h-20v-12.586l-1.293 1.293-.707-.707 12-12 12 12-.707.707-1.293-1.293zm-6 11.586h5v-12.586l-9-9-9 9v12.586h5v-9h8v9zm-1-7.889h-6v7.778h6v-7.778z"/></svg>
+                              <a href="home.html"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M22 11.414v12.586h-20v-12.586l-1.293 1.293-.707-.707 12-12 12 12-.707.707-1.293-1.293zm-6 11.586h5v-12.586l-9-9-9 9v12.586h5v-9h8v9zm-1-7.889h-6v7.778h6v-7.778z"/></svg></a>  
                             </div>  
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="barDiv">
-            <div id="myProgress">
-                <div id="myBar">0%</div>
+        
+            <div class="barDiv">
+                <div id="myProgress">
+                    <div id="myBar">0%</div>
+                </div>
             </div>
-        </div>
+        
     </div>
+    
                     
     <audio src="Asian Gong Hit-SoundBible.com-1634281527.mp3" id="timerAudio"></audio>
     <audio src="cheer2.mp3" id="finishAudio"></audio>
@@ -86,24 +96,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
     <script>
 
+    const currentUrl = window.location.href;
+    const url = new URL(currentUrl);
+    const day = url.searchParams.get("day") || "monday";
+
     const workoutData = {
-        monday: [{ description: "Burpee One Legged", imageSource:"images/1singleLegBurpee.jpg"},{description:"1X JUMP SQUAT + 1X BURPEE PYRAMID", imageSource:"images/2pyramid_burpee.png"},{description: "SQUAD PULSE",imageSource:"images/3exercise-squat-pulse.jpg"},{description:"HIGH KNEES, SINGLE KNEE", imageSource:"images/4Plyometrics-High-Knees.jpg"},{description:"5.MOVING PLANK" ,imageSource:"images/5walking-plank.jpg"},{description: "INCH WORM",imageSource:"images/6Inchworm.jpg"},{description:"LATERAL TUCK JUMPS" ,imageSource:"images/7tuck-jumps.jpg"},{description:"MOUNTAIN CLIMBERS" ,imageSource:"images/8mountain-climbers.jpg"},{description:"BEAR CRAWL + REVERSE" ,imageSource:"images/9Bear-Crawl.jpg"}],
-        tuesday:[{description: "REVERSE BURPEE",imageSource: "images/tuesday/1.reverse-burpee.jpg" }, {description:"HAND WALKS IN HAND WALKS OUT" ,imageSource: "images/tuesday/2Inchworm.jpg" },{description: "ICE SKATER"  ,imageSource: "images/tuesday/3.iceskater.jpg" },{description: "PUSH UP JACK"  ,imageSource: "images/tuesday/4Push-Up-Jack_Exercise.jpg" },{description: "PLANKS FEET TWISTS" ,imageSource: "images/tuesday/5.planksfeettwist.jpg" },{description: "SQUAT PULSE COMBO" ,imageSource: "images/tuesday/6pulse-squat-1-800x728.webp" },{description: "5X JACKNIVES + 5X CRUNCHES" ,imageSource: "images/tuesday/7. crunches.gif" },{description: "MOUNTAIN CLIMBERS WIDE"  ,imageSource: "images/tuesday/8.mountainwide.gif" },{description: "SPRINTING LUNGES"  ,imageSource: "images/tuesday/9.sprinters-lunge-hip-exercise.gif"}],
-        wednesday:[{description: "MOUNTAIN CLIMBERS" ,imageSource: "images/wednesday/1.mountainclimbers.gif" }, {description: "BURPEE HANDS OFF"  ,imageSource: "images/wednesday/2.BURPEE.gif" },{description: "10X HEEL TOUCHES + 4X ICE SKATER " ,imageSource:"images/wednesday/3HEELTOUCHES.gif" },{description:  "SQUAD MIDPOINT ALTERNATIVE REVERSE LUNGES" ,imageSource: "images/wednesday/4.SQUAD MIDPOINT.gif" },{description: "MOVING PLANK"  ,imageSource: "images/wednesday/5Plank-Walkdown.gif" },{description: "TUCK JUMP",imageSource: "images/wednesday/6TUCK JUMP.gif" },{description: "TRICEP PUSH UP + FOOT JACKS"  ,imageSource: "images/wednesday/7crossjacks.gif" },{description: "10X BICYCLE KICKS + KICKS + 5X JACKKNIVES" ,imageSource: "images/wednesday/8SpiritedThreadbareLeafbird-small.gif" },{description: "GORILLA BOUNDS " ,imageSource: "images/wednesday/9crocodile-walk.jpg" }]
-        // thursday: [{description:   ,imageSource:  }, {description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  }]
-        // friday: [{description:   ,imageSource:  }, {description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  }]
-        // saturday: [{description:   ,imageSource:  }, {description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  }]
-        // sunday: [{description:   ,imageSource:  }, {description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  },{description:   ,imageSource:  }]
-    
+        monday: [{ description: "BURPEE ONE LEGGED", imageSource:"images/1singleLegBurpee.gif"},{description:"TUCK JUMPS", imageSource:"images/introjump.gif"},{description: "SQUAD PULSE",imageSource:"images/3exercise-squat-pulse.gif"},{description:"HIGH KNEES, SINGLE KNEE", imageSource:"images/4Plyometrics-High-Knees.gif"},{description:"5.MOVING PLANK" ,imageSource:"images/5walking-plank.gif"},{description: "INCH WORM",imageSource:"images/6Inchworm.gif"},{description:"LATERAL TUCK JUMPS" ,imageSource:"images/7tuck-jumps.gif"},{description:"MOUNTAIN CLIMBERS" ,imageSource:"images/8mountain-climbers.gif"},{description:"BEAR CRAWL + REVERSE" ,imageSource:"images/9Bear-Crawl.gif"}],
+        tuesday:[{description: "REVERSE BURPEE",imageSource: "images/tuesday/1.reverseburpee.gif" }, {description:"HAND WALKS IN HAND WALKS OUT" ,imageSource: "images/6Inchworm.gif" },{description: "ICE SKATER"  ,imageSource: "images/tuesday/3.iceskater.gif" },{description: "PUSH UP JACK"  ,imageSource: "images/tuesday/4Push-Up-Jack_Exercise.gif" },{description: "PLANKS FEET TWISTS" ,imageSource: "images/tuesday/5.planksfeettwist.gif" },{description: "SQUAT PULSE COMBO" ,imageSource: "images/tuesday/6pulse-squat.gif" },{description: "5X JACKNIVES + 5X CRUNCHES" ,imageSource: "images/tuesday/7. crunches.gif" },{description: "MOUNTAIN CLIMBERS WIDE"  ,imageSource: "images/tuesday/8.mountainwide.gif" },{description: "SPRINTING LUNGES"  ,imageSource: "images/tuesday/9.sprinters-lunge-hip-exercise.gif"}],
+        wednesday:[{description: "MOUNTAIN CLIMBERS" ,imageSource: "images/wednesday/1.mountainclimbers.gif" }, {description: "BURPEE HANDS OFF"  ,imageSource: "images/wednesday/2.BURPEE.gif" },{description: "10X HEEL TOUCHES + 4X ICE SKATER " ,imageSource:"images/wednesday/3HEELTOUCHES.gif" },{description:  "SQUAD MIDPOINT ALTERNATIVE REVERSE LUNGES" ,imageSource: "images/wednesday/4.SQUAD MIDPOINT.gif" },{description: "MOVING PLANK"  ,imageSource: "images/wednesday/5Plank-Walkdown.gif" },{description: "TUCK JUMP",imageSource: "images/wednesday/6TUCK JUMP.gif" },{description: "TRICEP PUSH UP + FOOT JACKS"  ,imageSource: "images/wednesday/7crossjacks.gif" },{description: "10X BICYCLE KICKS + KICKS + 5X JACKKNIVES" ,imageSource: "images/wednesday/8SpiritedThreadbareLeafbird-small.gif" },{description: "GORILLA BOUNDS " ,imageSource: "images/9Bear-Crawl.gif" }],
+        thursday: [{ description: "BURPEE ONE LEGGED", imageSource:"images/1singleLegBurpee.gif"},{description:"TUCK JUMPS", imageSource:"images/introjump.gif"},{description: "SQUAD PULSE",imageSource:"images/3exercise-squat-pulse.gif"},{description:"HIGH KNEES, SINGLE KNEE", imageSource:"images/4Plyometrics-High-Knees.gif"},{description:"5.MOVING PLANK" ,imageSource:"images/5walking-plank.gif"},{description: "INCH WORM",imageSource:"images/6Inchworm.gif"},{description:"LATERAL TUCK JUMPS" ,imageSource:"images/7tuck-jumps.gif"},{description:"MOUNTAIN CLIMBERS" ,imageSource:"images/8mountain-climbers.gif"},{description:"BEAR CRAWL + REVERSE" ,imageSource:"images/9Bear-Crawl.gif"}],
+        friday:[{description: "REVERSE BURPEE",imageSource: "images/tuesday/1.reverseburpee.gif" }, {description:"HAND WALKS IN HAND WALKS OUT" ,imageSource: "images/6Inchworm.gif" },{description: "ICE SKATER"  ,imageSource: "images/tuesday/3.iceskater.gif" },{description: "PUSH UP JACK"  ,imageSource: "images/tuesday/4Push-Up-Jack_Exercise.gif" },{description: "PLANKS FEET TWISTS" ,imageSource: "images/tuesday/5.planksfeettwist.gif" },{description: "SQUAT PULSE COMBO" ,imageSource: "images/tuesday/6pulse-squat.gif" },{description: "5X JACKNIVES + 5X CRUNCHES" ,imageSource: "images/tuesday/7. crunches.gif" },{description: "MOUNTAIN CLIMBERS WIDE"  ,imageSource: "images/tuesday/8.mountainwide.gif" },{description: "SPRINTING LUNGES"  ,imageSource: "images/tuesday/9.sprinters-lunge-hip-exercise.gif"}],
+        saturday:[{description: "MOUNTAIN CLIMBERS" ,imageSource: "images/wednesday/1.mountainclimbers.gif" }, {description: "BURPEE HANDS OFF"  ,imageSource: "images/wednesday/2.BURPEE.gif" },{description: "10X HEEL TOUCHES + 4X ICE SKATER " ,imageSource:"images/wednesday/3HEELTOUCHES.gif" },{description:  "SQUAD MIDPOINT ALTERNATIVE REVERSE LUNGES" ,imageSource: "images/wednesday/4.SQUAD MIDPOINT.gif" },{description: "MOVING PLANK"  ,imageSource: "images/wednesday/5Plank-Walkdown.gif" },{description: "TUCK JUMP",imageSource: "images/wednesday/6TUCK JUMP.gif" },{description: "TRICEP PUSH UP + FOOT JACKS"  ,imageSource: "images/wednesday/7crossjacks.gif" },{description: "10X BICYCLE KICKS + KICKS + 5X JACKKNIVES" ,imageSource: "images/wednesday/8SpiritedThreadbareLeafbird-small.gif" },{description: "GORILLA BOUNDS " ,imageSource: "images/9Bear-Crawl.gif" }],
+       
     }
     let timeElapsed = 0
     let seconds =0
     let roundLevel =4
     let numberExercisesDone =0
     let station = 1 
-    let arrOfStations = workoutData.wednesday;
+    let arrOfStations = workoutData[day];
     const bar = document.getElementById("myBar");
-    let numOfLaps = arrOfStations.length*roundLevel;
+    const numOfLaps = arrOfStations.length*roundLevel;
 const element = document.getElementById('timer')
 const round = document.getElementById('round')
 const exercise = document.getElementById('exerciseType')
@@ -118,6 +131,11 @@ const icons = document.querySelector(".icons")
 const body = document.body
 const pausedSvg = document.querySelector(".paused")
 const playSvg = document.querySelector(".play")
+const refreshSvg = document.querySelector(".refresh")
+const previousBtn = document.getElementById('previous')
+const nextBtn = document.getElementById('next')
+let percent = 0
+
 
 let restStart = 44
 let restEnd = 60
@@ -132,14 +150,30 @@ let hasChangedExercice = false;
 let startExercise= false
 circleRotation45()
 
+let frames = 0;
+const totalFrames = numOfLaps * restEnd * 60 - (restEnd - restStart) * 60;
+
 function update() // RequestAnimationFrame
 {   
+    
+
+    if (frames > totalFrames) {
+        frames = totalFrames;
+    }
+    percent = frames/totalFrames*100
+    bar.style.width = percent + "%"
+    bar.innerHTML = Math.floor(percent * 10) / 10 + "%"
+
     if(paused) {
         return
     }
+
     timeElapsed += 1 / 60;
     seconds = Math.floor(timeElapsed);
-    
+
+    frames++;
+
+
     
 
     if (seconds >= effortStart && seconds <= efforEnd) {
@@ -151,9 +185,9 @@ function update() // RequestAnimationFrame
             i = i +1
             document.getElementById("timerAudio").play()
             numberExercisesDone = numberExercisesDone +1
-            const percent = Math.floor(numberExercisesDone/numOfLaps*100)
-            bar.style.width = percent + "%";
-            bar.innerHTML = percent + "%";
+            // percent = Math.floor(numberExercisesDone/numOfLaps*100)
+            // bar.style.width = percent + "%"
+            // bar.innerHTML = percent + "%"
             stationNumberText.innerHTML = i + 1
             timerSquare.style.backgroundColor = "red"; 
             heartSvg.style.display = "none"
@@ -205,7 +239,7 @@ window.requestAnimationFrame(update);
 function circleRotation45() {
 
     outer.style.strokeDashoffset = 534;
-
+    gsap.killTweensOf(".outer")
     gsap.to(".outer", {
         duration: 44,  
         strokeDashoffset: 0
@@ -231,13 +265,124 @@ function pausedClicked() {
     // }, 1000)
 }
 function playClick() {
-    paused=false;
+    if (paused===true) {
+        console.log(paused, 'paused')
+    paused=false
+    update()
     gsap.globalTimeline.play()
+    }
+    
+}
+
+
+function next () {
+    i++
+    circleRotation45() 
+    console.log(0)
+    if (i === arrOfStations.length) {
+        console.log(1)
+        roundLevel = roundLevel - 1
+        round.innerHTML = `${roundLevel}`
+        
+
+        if (roundLevel<1) {
+            numberExercisesDone = numberExercisesDone +1
+            frames = totalFrames;
+
+            if(roundLevel<1) {
+                frames = totalFrames;
+                document.getElementById("finishAudio").play()
+
+                paused = true;
+            }
+            
+        } else {
+            i = 0;
+            stationNumberText.innerHTML = i + 1
+            exercise.innerHTML = arrOfStations[i].description
+            image.src = arrOfStations[i].imageSource
+            numberExercisesDone = numberExercisesDone +1
+        }
+            
+    } else {
+        exercise.innerHTML = arrOfStations[i].description
+        image.src = arrOfStations[i].imageSource
+        stationNumberText.innerHTML = i + 1
+        timeElapsed = 0
+        seconds = Math.floor(timeElapsed);
+        element.innerHTML = `00:${seconds}`
+        document.getElementById("timerAudio").play()
+        heartSvg.style.display = "block"
+        stopSvg.style.display = "none"
+        timerSquare.style.backgroundColor = "rgb(33, 170, 33)"
+        workTextParagraph.innerHTML = "Work"
+        hasChangedExercice = false;
+        numberExercisesDone = numberExercisesDone +1
+        // percent = Math.floor(numberExercisesDone/numOfLaps*100)
+        // bar.style.width = percent + "%";
+        // bar.innerHTML = percent + "%";
+        round.innerHTML = `${roundLevel}`
+
+    }
+
+    frames = numberExercisesDone * restEnd * 60;
+    
+        
+}
+
+function previous() {
+    i--
+    numberExercisesDone = numberExercisesDone - 1
+
+    if(i>=0){
+        timeElapsed = 0
+        seconds = Math.floor(timeElapsed);
+        element.innerHTML = `00:${seconds}`
+        exercise.innerHTML = arrOfStations[i].description
+        image.src = arrOfStations[i].imageSource
+        stationNumberText.innerHTML = i +1
+        circleRotation45()
+        document.getElementById("timerAudio").play()
+        heartSvg.style.display = "block"
+        stopSvg.style.display = "none"
+        timerSquare.style.backgroundColor = "rgb(33, 170, 33)"
+        workTextParagraph.innerHTML = "Work"
+        hasChangedExercice = false;
+    }
+    
+        
+    if (i <0 && roundLevel <4) {
+        i= arrOfStations.length -1
+        numberExercisesDone = numberExercisesDone + 1
+        roundLevel = roundLevel + 1
+        round.innerHTML = `${roundLevel}`
+        timeElapsed = 0
+        seconds = Math.floor(timeElapsed);
+        element.innerHTML = `00:${seconds}`
+        exercise.innerHTML = arrOfStations[i].description
+        image.src = arrOfStations[i].imageSource
+        stationNumberText.innerHTML = i +1
+        circleRotation45()
+        
+    } else if (i<0 && roundLevel>=4) {
+        i=0
+        stationNumberText.innerHTML= 1
+        numberExercisesDone=0
+    }
+
+    frames = numberExercisesDone * restEnd * 60;
 }
 
 body.addEventListener("mousemove", iconsPop)
 pausedSvg.addEventListener("click",pausedClicked)
 playSvg.addEventListener("click",playClick)
+refreshSvg.addEventListener('click', function(){
+    location.reload();
+    return false
+} )
+nextBtn.addEventListener('click',next)
+previousBtn.addEventListener('click',previous)
+
 
 
 

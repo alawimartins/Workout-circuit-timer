@@ -1,3 +1,6 @@
+
+
+
 * {
     box-sizing: border-box;
 }
@@ -29,20 +32,7 @@ h3 {
     justify-content: space-between;
 }
 
-#myProgress {
-    width: 100%;
-    background-color: #CDCDCD;
-  }
 
-#myBar {
-    width: 0%;
-    height: 40px;
-    background-color: #4CAF50;
-    text-align: center; /* To center it horizontally (if you want) */
-    line-height: 30px; /* To center it vertically */
-    color: white;
-    stroke-dasharray: 50;
-  }
 
   
 .firstContainer{
@@ -226,17 +216,54 @@ svg  {
 
 .imageAndStation {
     display: flex;
+    position: relative;
 }
 .myImg {
 
 }
 
+#myProgress {
+    width: 100%;
+    background-color: rgb(216, 216, 216);
+    box-shadow: 0px 10px 9px -6px rgba(0,0,0,0.6);
+    border-radius: 20px;
+  }
+
+#myBar {
+    width: 0%;
+    height: 40px;
+    background-color: red;
+    text-align: center; /* To center it horizontally (if you want) */
+    line-height: 30px; /* To center it vertically */
+    color: white;
+    stroke-dasharray: 50;
+    border-color: rgba(255, 251, 251, 0.73);
+    border-radius: 20px;
+    /* transition: all .8s; */
+  }
+
+
+/* .barDivBorder{
+    position: fixed;
+    bottom: 0;
+    height:50px;
+    background-color: white;
+    width: calc(100% - 270px);
+    left: 270px;
+    
+} */
+
 .barDiv {
     position: fixed;
     bottom: 0;
-
+    
     width: calc(100% - 270px);
     left: 270px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    padding: 9px;
+    border-radius: 20px;
 }
   
 #exerciseType {
@@ -249,23 +276,24 @@ svg  {
 
 }
 .secondRow {
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     
 }
 
 .parentIcons {
     position:relative;
-    overflow: hidden;
 
     
 }
-.parentIcons:hover .icons {
+/* .parentIcons:hover .icons {
     transition-duration: .7s;
     transition-timing-function: linear;
     right: 0px;
     cursor: pointer;
-}
+} */
 
 .icons {
     fill:white;
@@ -279,9 +307,13 @@ svg  {
     visibility: hidden;
     width: 100px;
     position: relative;
-    right: -100px;
     background-color: red;
     margin: 0;
+}
+
+.home a svg {
+text-decoration: none;  
+fill: white;  
 }
 
 .refresh:hover, .play:hover, .paused:hover, .home:hover {
@@ -293,6 +325,47 @@ svg  {
     cursor: pointer;
     
 }
+
+.buttonsLeftRight {
+    position: absolute;
+    top:104%;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+
+}
+
+.buttons {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    background-color: #003399;
+    margin: 0 10px;
+    box-shadow: -2px -1px 40px 1px rgba(0,0,0,0.75);
+
+
+  }
+  
+  .buttons:hover {
+    color: white;
+  }
+  
+  .previous {
+    background-color: #f1f1f1;
+    color: black;
+  }
+  
+  .next {
+    background-color: #f1f1f1;
+    color: white;
+  }
+
+ 
+
  
   /* END Keyframes for the initial animation */
 
